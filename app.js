@@ -12,7 +12,7 @@ const port = 3000
 app.use(express.json())
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:5173"
+    origin: "https://test-hh-front.onrender.com"
 }))
 
 const __filename = fileURLToPath(import.meta.url);
