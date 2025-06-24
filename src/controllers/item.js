@@ -20,11 +20,20 @@ class ItemController {
         res.status(200).json({ status: "success", message: `get id: ${id} with ${isSelected}` })
     }
 
-    moveList(prevIndex, newIndex, res) {
-        let newArray = array_move(dataList, prevIndex, newIndex)
-        dataList = [...newArray];
+    moveList(prevIndex, newIndex, res, search) {
+        if (search) {
+            let filtered = dataList.filter(it => it.text.includes(search))
+            let _prevIndex = dataList.indexOf(filtered[prevIndex])
+            let _newIndex = dataList.indexOf(filtered[newIndex])
+            let newArray = array_move(dataList, _prevIndex, _newIndex)
+            dataList = [...newArray];
+            res.status(200).json({ status: "success" })
+        } else {
+            let newArray = array_move(dataList, prevIndex, newIndex)
+            dataList = [...newArray];
+            res.status(200).json({ status: "success" })
+        }
 
-        res.status(200).json({ status: "success" })
     }
 
     getAllList(page, res, search) {

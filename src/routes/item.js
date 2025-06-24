@@ -11,7 +11,8 @@ router.post('/select/:id', (req, res) => {
 
 router.post('/move', (req, res) => {
     let item = new ItemMove(req.body)
-    ItemController.moveList(item.prevInd, item.newInd, res)
+    let search = req.query.search
+    ItemController.moveList(item.prevInd, item.newInd, res, search)
 })
 
 router.get('/all', (req, res) => {
