@@ -1,18 +1,20 @@
 import express from 'express'
 import cors from 'cors'
+import dotenv from 'dotenv'
 
 import { readdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 
 export const app = express()
+dotenv.config()
 const port = 3000
 
 //Базовые настройки
 app.use(express.json())
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:5173"
+    origin: process.env.HOST
 }))
 
 const __filename = fileURLToPath(import.meta.url);
