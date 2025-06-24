@@ -10,6 +10,8 @@ export const app = express()
 dotenv.config()
 const port = 3000
 
+console.log(process.env.HOST)
+
 //Базовые настройки
 app.use(express.json())
 app.use(cors({
